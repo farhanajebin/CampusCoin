@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="arcade">
 <head>
-<meta charset="UTF-8">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CampusCoin – level up your pocket money</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1131,6 +1132,16 @@ function boot(){
   render();
 }
 boot();
+</script>
+<script>
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', () =>{
+      navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker registered! Scope:' , reg.scope))
+      .catch(err => console.log('Service Worker registrtion failed:' ,  err));
+
+    });
+  }
 </script>
 </body>
 </html>
